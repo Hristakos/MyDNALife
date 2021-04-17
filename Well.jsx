@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-export default function Well({ status, x, y }) {
+export default function Well({ status, x, y, currentX, currentY, placed }) {
     const [xIndex, setXIndex] = useState(x);
     const [yIndex, setYIndex] = useState(y);
 
     return (
-        <View style={[styles.container, { backgroundColor: status ? "white" : "blue" }]}>
+        <View style={[styles.container, { backgroundColor: currentX === x && currentY === y && placed ? "black" : status ? "white" : "blue" }]}>
             <Text>x{xIndex}, y{yIndex}</Text>
         </View>
     )

@@ -6,7 +6,7 @@ import Well from './Well';
 
 // Store the status of a well true = Empty, false = Full
 
-const wells = [
+const data = [
     [true, true, true, true, true],
     [true, true, true, true, true],
     [true, true, true, true, true],
@@ -15,10 +15,11 @@ const wells = [
 ]
 
 
-export default function Plate() {
+export default function Plate({ posX, posY, valid }) {
     const [x, setX] = useState(null);
     const [y, setY] = useState(null);
-
+    const [wells, setsWells] = useState(data)
+    console.log("pos x = " + posX + " pos y = " + posY);
     return (
         <View style={styles.container}>
             {
@@ -31,6 +32,9 @@ export default function Plate() {
                                 status={wellStatus}
                                 x={xIndex}
                                 y={yIndex}
+                                currentX={posX}
+                                currentY={posY}
+                                placed={valid}
                             />
                         )}
                     </View>
