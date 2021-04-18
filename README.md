@@ -34,11 +34,11 @@
 
 ## Drop Disabled Detect Report
 
-- When Drop is clicked the well becomes blue to indicate that it is full and the button becomes disabled, when robot arm move to empty well is becomes enabled again.
+- When Drop is clicked the well becomes blue to indicate that it is full and the button becomes disabled, when robot arm moves to empty well is becomes enabled again.
 
 - When Detect is clicked the status of well is displayed either EMPTY or FULL when arm is moved the detect display becomes blank again.
 
-- When Report is clicked the position of robot arm is displayed and the statue of the well is also Displayed. In example robot arm is over 1,1 and well is full. when arm is moved the report dispay becomes blank again.
+- When Report is clicked the position of robot arm is displayed and the status of the well is also displayed. In example robot arm is over 1,1 and well is full. when arm is moved the report dispay becomes blank again.
 
 ![Drop Disabled Detect Report](drop_diabled_detect_report.jpg)
 
