@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native'
 
-export default function Place({ newX, newY, handlePlacePress, handleXChangeText, handleYChangeText }) {
+export default function Place({ newX, newY, onPress, handleXChangeText, handleYChangeText }) {
+    const inputs = {};
+
+    const focusNextField = (id) => {
+        inputs[id].focus();
+    }
     return (
         <View style={styles.placeContainer}>
             <TouchableOpacity
                 style={[styles.place, { opacity: newY === null || newX === null ? 0.5 : 1 }]}
                 disabled={newY === null || newX === null ? true : false}
-                onPress={handlePlacePress}
+                onPress={onPress}
             >
                 <Text >Place</Text>
 
@@ -15,22 +20,38 @@ export default function Place({ newX, newY, handlePlacePress, handleXChangeText,
             <View style={styles.text}>
 
                 <TextInput
-                    style={styles.xInput}
-                    placeholder="Enter X Value"
+                    style={styles.input}
+                    placeholder="X Value"
                     keyboardType="number-pad"
                     maxLength={1}
                     onChangeText={handleXChangeText}
+                    autoFocus={true}
+                    blurOnSubmit={true}
+                    onEndEditing={() => {
+                        focusNextField('two');
+                    }}
+                    ref={input => {
+                        inputs['one'] = input;
+                    }}
+                    returnKeyType={"done"}
                 />
+
                 <Text>X</Text>
             </View>
             <View style={styles.text}>
 
                 <TextInput
-                    style={styles.xInput}
-                    placeholder="Enter Y Value"
+                    style={styles.input}
+                    placeholder="Y Value"
                     keyboardType="number-pad"
                     maxLength={1}
                     onChangeText={handleYChangeText}
+                    blurOnSubmit={true}
+                    returnKeyType={"done"}
+                    ref={input => {
+                        inputs['two'] = input;
+                    }}
+
                 />
                 <Text>Y</Text>
             </View>
@@ -40,21 +61,22 @@ export default function Place({ newX, newY, handlePlacePress, handleXChangeText,
 
 const styles = StyleSheet.create({
     placeContainer: {
-        flexDirection: "row"
+        flexDirection: "row",
+        marginTop: 20
     },
     row: {
         flexDirection: "row"
     },
     place: {
-        width: 100,
-        height: 50,
-        backgroundColor: "blue",
+        width: 250 / 3,
+        height: 30,
+        backgroundColor: "yellow",
         alignItems: "center",
         justifyContent: "center"
     },
-    xInput: {
-        width: 100,
-        height: 50,
+    input: {
+        width: 250 / 3,
+        height: 30,
         borderWidth: 1,
         borderColor: "black",
         textAlign: "center"

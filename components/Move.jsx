@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Move({ placed, x, y, north, east, south, west }) {
-    console.log("placed = " + placed + "y = " + y)
+
     return (
         <View style={styles.container}>
             <View style={styles.rowTopBottom}>
@@ -52,22 +52,22 @@ export default function Move({ placed, x, y, north, east, south, west }) {
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 1,
         width: 250,
-        height: 150,
+        height: 90,
         alignItems: "center",
+        marginTop: 10
 
     },
     rowTopBottom: {
         borderWidth: 1,
         width: 250 / 3,
-        height: 50,
+        height: 30,
     },
     rowMiddle: {
         flexDirection: "row",
         borderWidth: 1,
         width: 250,
-        height: 50,
+        height: 30,
         justifyContent: "space-between"
     },
     button: {

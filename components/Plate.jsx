@@ -3,23 +3,10 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Well from './Well';
 
+export default function Plate({ valid, data }) {
 
-// Store the status of a well true = Empty, false = Full
-
-const data = [
-    [true, true, true, true, true],
-    [true, true, true, true, true],
-    [true, true, true, true, true],
-    [true, true, true, true, true],
-    [true, true, true, true, true],
-]
-
-
-export default function Plate({ posX, posY, valid }) {
-    const [x, setX] = useState(null);
-    const [y, setY] = useState(null);
     const [wells, setsWells] = useState(data)
-    console.log("pos x = " + posX + " pos y = " + posY);
+
     return (
         <View style={styles.container}>
             {
@@ -30,10 +17,6 @@ export default function Plate({ posX, posY, valid }) {
                             <Well
                                 key={xIndex}
                                 status={wellStatus}
-                                x={xIndex}
-                                y={yIndex}
-                                currentX={posX}
-                                currentY={posY}
                                 placed={valid}
                             />
                         )}
@@ -48,7 +31,10 @@ export default function Plate({ posX, posY, valid }) {
 const styles = StyleSheet.create({
     container: {
         alignItems: "center",
-        flexDirection: "column-reverse"
+        justifyContent: "center",
+        flexDirection: "column-reverse",
+        height: "40%",
+        width: "80%",
     },
     row: {
         flexDirection: "row"
