@@ -1,9 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Well from './Well';
-
-export default function Plate({ valid, data }) {
+/*
+    This component is the plate which has the 5 x 5 wells.
+    data is passed in which is an array that represents the status of each particular well. true indicated 
+    that the well is empty fasle indicates full.
+    the array is mapped to create the 5 X 5 wells.
+    The well components is passed the status of the well so the well can display full or empty color.
+*/
+export default function Plate({ data }) {
 
     const [wells, setsWells] = useState(data)
 
@@ -17,7 +22,7 @@ export default function Plate({ valid, data }) {
                             <Well
                                 key={xIndex}
                                 status={wellStatus}
-                                placed={valid}
+
                             />
                         )}
                     </View>

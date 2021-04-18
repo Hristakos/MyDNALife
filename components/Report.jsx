@@ -1,6 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-
+/*
+    This component is passed placed indicating if place has been executed.
+    If place has not been executed button is disabled.
+    onPress function passed in to handle button press.
+    report is the output to display ie (0 , 0 , EMPTY).
+*/
 export default function Report({ placed, onPress, report = "" }) {
     return (
         <View style={styles.container}>

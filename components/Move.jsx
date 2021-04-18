@@ -1,6 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import constants from '../common/constants.js'
+/*
+    This component takes in placed true/false, x,y positions indicating position of robot arm,
+    north, east, sout,west functions to perform on press for corresponding buttons pressed.
+    North button enabled if placed has been performed and y value is less than MAX_Y (4).
+    East button enabled if placed has been executed and x value is less than MAX_X (4).
+    South button enabled if placed has been executed and y value is greater than MIN_Y (0).
+    West button is enabled if placed has been executed and x value greater than MIN_X (0).
+*/
 
+const { MIN_X, MAX_X, MIN_Y, MAX_Y } = constants;
 export default function Move({ placed, x, y, north, east, south, west }) {
 
     return (
@@ -8,8 +18,8 @@ export default function Move({ placed, x, y, north, east, south, west }) {
             <View style={styles.rowTopBottom}>
 
                 <TouchableOpacity
-                    style={[styles.button, { opacity: placed && y < 4 ? 1 : 0.5 }]}
-                    disabled={placed && y < 4 ? false : true}
+                    style={[styles.button, { opacity: placed && y < MAX_Y ? 1 : 0.5 }]}
+                    disabled={placed && y < MAX_Y ? false : true}
                     onPress={north}>
                     <Text style={styles.northText}>North</Text>
                 </TouchableOpacity>
@@ -19,16 +29,16 @@ export default function Move({ placed, x, y, north, east, south, west }) {
             <View style={styles.rowMiddle}>
 
                 <TouchableOpacity
-                    style={[styles.button, { opacity: placed && x > 0 ? 1 : 0.5 }]}
-                    disabled={placed && x > 0 ? false : true}
+                    style={[styles.button, { opacity: placed && x > MIN_X ? 1 : 0.5 }]}
+                    disabled={placed && x > MIN_X ? false : true}
                     onPress={west}
                 >
                     <Text style={styles.northText}>West</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={[styles.button, { opacity: placed && x < 4 ? 1 : 0.5 }]}
-                    disabled={placed && x < 4 ? false : true}
+                    style={[styles.button, { opacity: placed && x < MAX_X ? 1 : 0.5 }]}
+                    disabled={placed && x < MAX_X ? false : true}
                     onPress={east}
                 >
                     <Text style={styles.eastText}>East</Text>
@@ -38,8 +48,8 @@ export default function Move({ placed, x, y, north, east, south, west }) {
 
             <View style={styles.rowTopBottom}>
                 <TouchableOpacity
-                    style={[styles.button, { opacity: placed && y > 0 ? 1 : 0.5 }]}
-                    disabled={placed && y > 0 ? false : true}
+                    style={[styles.button, { opacity: placed && y > MIN_Y ? 1 : 0.5 }]}
+                    disabled={placed && y > MIN_Y ? false : true}
                     onPress={south}
                 >
                     <Text style={styles.northText}>South</Text>
