@@ -14,7 +14,7 @@
 
 ## Place Command
 
-- Once place command is executed all buttons become enable.
+- Once place command is executed all buttons become enabled.
 - Move buttons become disabled if arm is on outer edges. In example place command is 0, 1 so the west button is disabled as the arm is not permitted to move outside the plate.
 
 ![Place Command](place_command.jpg)
@@ -38,7 +38,7 @@
 
 - When Detect is clicked the status of well is displayed either EMPTY or FULL when arm is moved the detect display becomes blank again.
 
-- When Report is clicked the position of robot arm is displayed and the status of the well is also displayed. In example robot arm is over 1,1 and well is full. when arm is moved the report dispay becomes blank again.
+- When Report is clicked the position of robot arm is displayed and the status of the well is also displayed. In example robot arm is over 1,1 and well is full. when arm is moved the report display becomes blank again.
 
 ![Drop Disabled Detect Report](drop_diabled_detect_report.jpg)
 
